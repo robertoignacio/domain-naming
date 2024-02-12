@@ -1,13 +1,11 @@
 # import sqlite3
 
-# Description : This file counts the number of rows in a table in a SQLite database file.
+# Description: This script prints the first 10 rows of a table in a sqlite database file.
 
 # Variables for the control flow of the program
 # control_vars.py is at the same directory (level) as this file
 import control_vars as cv
 
-tld = cv.tld
-tld_s = cv.tld_s
 char_length = cv.char_length
 # Table and column names
 dn_table = cv.dn_table
@@ -24,19 +22,25 @@ cursor = db_connection.cursor()
 
 # Execute SQL Select statement
 cursor.execute(f'''
-    SELECT COUNT({dn_col}) FROM {dn_len_table}
+    SELECT * FROM {dn_table}
 ''')
 
 # cursor.execute(f'''
-#     SELECT COUNT(combination) FROM {all_combinations}
+#     SELECT * FROM {all_combinations}
 # ''')
 
-# Fetch the count result
-# Index the tuple returned by fetchone() to get the count
-num_rows = cursor.fetchone()[0]
+# Fetch all the rows
+rows = cursor.fetchall()
 
-# Print to terminal
-print(f'The number of rows is {num_rows}.')
+# Print the rows in terminal
+counter = 0
+
+for row in rows:
+    if counter < 10:
+        print(row)
+        counter += 1
+    else:
+        break
 
 # Close the connection
 db_connection.close()

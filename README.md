@@ -20,20 +20,24 @@ At the old days of the ".com" ."net" large brands could afford to register all d
 ## Usage
 With some few python scripts, you can know how many domain names are available to the tld of your choice.  
 <br>
-1. Have installed tqdm (at the venv or globally)  
-2. Have a text file with a column of domain names at each row, like the dummy text "icann_tld_dev_global_list.txt"
-3. Open control_vars.py and set the tld variable. ("tld" stands for top level domain).  
-4. At control_vars.py set the char_length variable. This is the length of the domain name you want to query.
-5. At control_vars.py set the input_file path to the file you want to query.
-6. python3 01_seed_only_domain_column_from_inputfile.py
-7. python3 02_create_table_from_db_by_char_length.py
-8. python3 03_create_table_all_combinations_at_char_length.py
-9. Utility scripts: u01, u02, u03, u04. Will print to terminal.
-10. Janitor scripts do sqlite cleanup.  
+1. Clone this repo. Directory structure: /proc_to_db/ and /inputfiles/, and files.
+2. Have python3 and tqdm (at the venv or globally)  
+3. At directory /inputfiles/ have a text file with domain names rows (shaped like dummy.txt)
+4. At directory /proc_to_db/ open in code editor control_vars.py and set the tld variable.
+5. At control_vars.py set the char_length variable. This is the length of the domain name you want to query.
+6. At control_vars.py set the input_file path to the file at /inputfiles/ you want to process.
+7. Move to /proc_to_db/ as scripts use that path location (cd proc_to_db)
+8. python3 01_seed_only_domain_column_from_inputfile.py
+9. python3 02_what_tables_exist_in_db_and_rows.py (will print to terminal).
+10. python3 03_create_table_all_combinations_at_char_length.py
+11. Utility scripts: u01, u02, u03.
+12. Janitor scripts: sqlite cleanup.
 <br>
-Long script names can be fast typed in terminal with: python3 01 --> tab: will autocomplete nearest match.  
+Long script names can be fast typed in terminal with:  
+python3 01 --> tab: will autocomplete nearest match.  
+python3 u01 --> tab: will autocomplete nearest match.
 <br>
-control_vars.py: store variable inputs that can change. Later will be a control panel.
+control_vars.py stores variable inputs that can change. Later will be a control panel.
 Set char_length there before running any script. 
 Warning: Each char_length integer increment will demand higher system resources.
 
@@ -41,3 +45,12 @@ Warning: Each char_length integer increment will demand higher system resources.
 pip install tqdm  
 (I've set up progress bars).  
 python3
+
+## Example output from script u03 for db domain name table with different char lengths for a tld
+```
+length: 30, are registered: 152
+length: 31, are registered: 191
+length: 32, are registered: 412333
+length: 33, are registered: 982
+length: 34, are registered: 11
+```
