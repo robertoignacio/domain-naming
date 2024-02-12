@@ -38,7 +38,6 @@ As txt files are super slow to query, I made some python scripts to convert it t
 * 01
 * 02
 * 03
-Creates sqlite tables
 
 ### Third: Query the db, output data
 TBA examples
