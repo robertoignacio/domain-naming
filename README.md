@@ -28,13 +28,12 @@ With some few python scripts, you can know how many domain names are available t
 6. python3 01_seed_only_domain_column_from_inputfile.py
 7. python3 02_create_table_from_db_by_char_length.py
 8. python3 03_create_table_all_combinations_at_char_length.py
-<br>
-Long script names can be fast typed in terminal with: python3 01 --> tab: will autocomplete nearest match  
-<br>
-9. Utility scripts: u01, u02, u03, u04. Will print to terminal.  
+9. Utility scripts: u01, u02, u03, u04. Will print to terminal.
 10. Janitor scripts do sqlite cleanup.  
 <br>
-control_vars.py: store variable inputs that can change.  
+Long script names can be fast typed in terminal with: python3 01 --> tab: will autocomplete nearest match.  
+<br>
+control_vars.py: store variable inputs that can change. Later will be a control panel.
 Set char_length there before running any script. 
 Warning: Each char_length integer increment will demand higher system resources.
 
