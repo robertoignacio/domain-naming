@@ -47,6 +47,9 @@ pip install tqdm
 (I've set up progress bars).  
 python3
 
+### Migration script from sqlite to postgres
+TBA
+
 ### Example output of script that finds if a domain name is registered or not.
 TBA 
 
