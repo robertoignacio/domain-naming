@@ -22,7 +22,7 @@ With some few python scripts, you can know how many domain names are available t
 <br>
 1. Have installed tqdm (at the venv or globally)  
 2. Have a text file with a column of domain names at each row, like the dummy text "icann_tld_dev_global_list.txt"
-3. Open control_vars.py and set the tld variable. "tld" stands for top level domain. In this case I am using ".dev" as tld.
+3. Open control_vars.py and set the tld variable. ()"tld" stands for top level domain).  
 4. At control_vars.py set the char_length variable. This is the length of the domain name you want to query.
 5. At control_vars.py set the input_file path to the file you want to query.
 6. python3 01_seed_only_domain_column_from_inputfile.py
@@ -41,16 +41,4 @@ Warning: Each char_length integer increment will demand higher system resources.
 ## Requires
 pip install tqdm  
 (I've set up progress bars).  
-
-### First: Get a file, somewhere
-This repository uses a dummy.txt file because you can use your own output url files from nmap scans _of your local network_, or get a tld file by requesting access from the ICANN website (create an account, free) which is more polite.  
-
-I use an ICANN CDZ file, but you can use any txt file as input data source of domain names that contain 1 column with the string shape: domainname.tld  
-As txt files are super slow to query, I made some python scripts to convert it to sqlite file db (later will be a remote postgres db).  
-
-### Second: Run the scripts from 01 to 03
-* 01
-* 02
-* 03
-
-### Third: Query the db, output data
+python3
