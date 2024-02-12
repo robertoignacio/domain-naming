@@ -35,6 +35,7 @@ With some few python scripts, you can know how many domain names are available t
 <br>
 Long script names can be fast typed in terminal with:  
 python3 01 --> tab: will autocomplete nearest match.  
+
 python3 u01 --> tab: will autocomplete nearest match.
 <br>
 control_vars.py stores variable inputs that can change. Later will be a control panel.
