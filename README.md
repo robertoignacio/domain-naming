@@ -34,6 +34,7 @@ With some few python scripts, you can know how many domain names are available t
 12. Janitor scripts: sqlite cleanup.
 <br>
 Long script names can be fast typed in terminal with:  
+
 python3 01 --> tab: will autocomplete nearest match.  
 
 python3 u01 --> tab: will autocomplete nearest match.
