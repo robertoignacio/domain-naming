@@ -38,8 +38,8 @@ Long script names can be fast typed in terminal with:
 python3 01 --> tab: will autocomplete nearest match.  
 python3 u01 --> tab: will autocomplete nearest match.
 <br>
-control_vars.py stores variable inputs that can change. Later will be a control panel.
-Set char_length there before running any script. 
+control_vars.py stores variable inputs that can change. Later will be a control panel.  
+Set char_length there before running any script.  
 Warning: Each char_length integer increment will demand higher system resources.
 
 ## Requires
