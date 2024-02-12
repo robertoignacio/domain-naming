@@ -10,7 +10,9 @@ db_connection = cv.db_connection
 # Create a cursor object
 cursor = db_connection.cursor()
 
+# Before running this script, run 02_what_tables_exist_in_db_and_rows.py to know which table to clean up
+# Change the table name to be cleaned up from the imported variables
+# Manually change the table to be dropped
 drop_table = ''
-
 # Drop the table! (run the: what_tables_exist_in_db_and_rows.py to see the tables)
 cursor.execute(f'DROP TABLE IF EXISTS {drop_table}')
