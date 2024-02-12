@@ -1,6 +1,6 @@
 # do not push db files to github because they tend to become large
 # use the janitor_db_vacuum.py to clean up the db file of unused space
-/db_store/*
+db_store/
 
 # do not include the venv directory
 venvname/
