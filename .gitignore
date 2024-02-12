@@ -1,4 +1,5 @@
 # do not push db files to github because they tend to become large
+# also, this python project at the moment generates sqlite db files, which will consume github storage
 # use the janitor_db_vacuum.py to clean up the db file of unused space
 db_store/*
 
