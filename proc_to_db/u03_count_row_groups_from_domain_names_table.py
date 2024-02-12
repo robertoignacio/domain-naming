@@ -1,6 +1,6 @@
 # import sqlite3
 
-# Description : This file counts the number of rows in a table in a SQLite database file.
+# Description : This script prints all domain name lengths within the domain_names_table, each with the number of registered domain names of that length.
 
 # Variables for the control flow of the program
 # control_vars.py is at the same directory (level) as this file

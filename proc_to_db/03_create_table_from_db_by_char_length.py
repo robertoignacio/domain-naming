@@ -22,7 +22,7 @@ cursor = db_connection.cursor()
 
 # Create a new table with rows where the character length until the TLD is equal to char_length
 cursor.execute(f'''
-    CREATE TABLE {dn_len_table} AS
+    CREATE TABLE IF NOT EXISTS {dn_len_table} AS
     SELECT * FROM {dn_table}
     WHERE INSTR({dn_col}, '{tld}') - 1 = {char_length}
 ''')

@@ -1,6 +1,6 @@
 # import sqlite3
 
-# Description : This file counts the number of rows in a table in a SQLite database file.
+# Description : This file counts the number of rows in the main table "domain_names_table".
 
 # Variables for the control flow of the program
 # control_vars.py is at the same directory (level) as this file

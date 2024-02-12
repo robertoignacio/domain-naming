@@ -30,8 +30,8 @@ With some few python scripts, you can know how many domain names are available t
 8. python3 01_seed_only_domain_column_from_inputfile.py
 9. python3 02_what_tables_exist_in_db_and_rows.py (will print to terminal).
 10. python3 03_create_table_all_combinations_at_char_length.py
-11. Utility scripts: u01, u02, u03.
-12. Janitor scripts: sqlite cleanup. Read the instruction on each janitor file.
+11. python3 04_create_table_domain_names_at_char_length.py
+12. Utility scripts and Janitor scripts. Read the Description on each file.
 <br>
 Long script names can be fast typed in terminal with:  
 

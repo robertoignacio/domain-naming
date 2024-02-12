@@ -3,6 +3,7 @@ from tqdm import tqdm # progress bar (not accessed here but where this file is i
 
 # Variables for the control flow of the program
 # Values that change often
+# Currently working on the Control Panel flow
 
 # Set the TLD to be used
 # TLD: Top Level Domain, like .com, .org, .net, .dev, etc.
@@ -11,7 +12,7 @@ tld = '.dev'
 tld_s = str(tld.lstrip('.'))
 
 # Define the character length (Beware of over 5, the db file enlarges significantly)
-char_length = int(4)
+char_length = int(2)
 
 # Input file path
 input_file = open(f'../inputfiles/dummy.txt', 'r')
@@ -34,3 +35,11 @@ assert dn_table.isidentifier(), "null"
 # Table name for the domain names with a specific character length
 dn_len_table = f'domain_names_length_{char_length}'
 all_combinations = f'all_combs_length_{char_length}'
+
+
+# Before running u01 run script 02 to know which table to query
+# dn_len_table use the char_length value
+# all_combinations use the char_length value
+# Modify here which table to query
+table = dn_table
+
