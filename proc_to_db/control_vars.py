@@ -34,4 +34,3 @@ assert dn_table.isidentifier(), "null"
 # Table name for the domain names with a specific character length
 dn_len_table = f'domain_names_length_{char_length}'
 all_combinations = f'all_combs_length_{char_length}'
-
