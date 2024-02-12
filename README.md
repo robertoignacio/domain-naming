@@ -47,14 +47,17 @@ pip install tqdm
 (I've set up progress bars).  
 python3
 
-### Example output from script 02_what_tables_exist_in_db_and_rows
+### Example output of script that finds if a domain name is registered or not.
+TBA 
+
+### Example output from script 02_what_tables_exist_in_db_and_rows.py
 ```
 all_combs_length_4, rows: 1679616
 domain_names_length_4, rows: 31990
 domain_names_table, rows: 822523
 ```
 
-### Example output from script u03 for db domain name table with different char lengths for a tld
+### Example output from script u03_count_row_groups_from_domain_names_table.py
 ```
 length: 30, are registered: 152
 length: 31, are registered: 191
