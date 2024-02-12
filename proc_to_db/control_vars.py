@@ -29,8 +29,10 @@ char_length = int(2)
 dn_len_table = f'domain_names_length_{char_length}'
 all_combinations = f'all_combs_length_{char_length}'
 
+# Input file path
 input_file = open(f'../inputfiles/icann_tld_{tld_s}_global_list_2024_02.txt', 'r')
 
+# sqlite db path
 db_path = f'../db_store/{tld_s}_tld_domain_names.db'
 # db_connection = sqlite3.connect(f'../db_store/{tld_s}_tld_domain_names.db')
 db_connection = sqlite3.connect(db_path)
