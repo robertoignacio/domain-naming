@@ -25,8 +25,9 @@ Long script names can be fast typed in terminal with: python3 01 --> tab: will a
 * Scripts u01, u02, u03, u04: print to terminal.  
 * Janitor scripts do sqlite cleanup.  
 
-* control_vars.py: store variable inputs that can change.
-Set char_length there before running any script. Each integer increment will demand higher system resources.
+control_vars.py: store variable inputs that can change.  
+Set char_length there before running any script. 
+Each integer increment will demand higher system resources.
 
 ## Requires
 pip install tqdm  
