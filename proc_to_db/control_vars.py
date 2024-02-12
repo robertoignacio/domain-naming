@@ -14,7 +14,7 @@ tld_s = str(tld.lstrip('.'))
 char_length = int(4)
 
 # Input file path
-input_file = open(f'../inputfiles/icann_tld_dev_global_list_2024_02.txt', 'r')
+input_file = open(f'../inputfiles/dummy.txt', 'r')
 
 # sqlite db path
 db_path = f'../db_store/{tld_s}_tld_domain_names.db'
