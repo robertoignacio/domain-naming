@@ -19,11 +19,14 @@ At the old days of the ".com" ."net" large brands could afford to register all d
 
 ## Usage
 With some scripts, you can know how many domain names are available to the tld of your choice.  
-Scripts 01, 02, 03 create db, tables.  
-Scripts u01, u02, u03, u04 print to terminal (you could output to txt, but data operations are better with the db).  
-Janitor scripts do sqlite cleanup.  
+<br>
+Long script names can be fast typed in terminal with: python3 01 --> tab: will autocomplete nearest match  
+* Scripts 01, 02, 03: create db, tables.  
+* Scripts u01, u02, u03, u04: print to terminal.  
+* Janitor scripts do sqlite cleanup.  
 
-control_vars.py store variable inputs that can change. Set char_length there before running any script. Each integer increment will demand higher system resources.
+* control_vars.py: store variable inputs that can change.
+Set char_length there before running any script. Each integer increment will demand higher system resources.
 
 ## Requires
 pip install tqdm  
