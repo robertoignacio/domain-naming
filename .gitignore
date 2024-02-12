@@ -3,6 +3,11 @@
 # use the janitor_db_vacuum.py to clean up the db file of unused space
 db_store/*
 
+# Ignore everything in the directory: your large 500MB text files
+/inputfiles/*
+# But don't ignore these files
+!/inputfiles/dummy.txt
+
 # do not include the venv directory
 venvname/
 
