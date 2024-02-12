@@ -47,7 +47,14 @@ pip install tqdm
 (I've set up progress bars).  
 python3
 
-## Example output from script u03 for db domain name table with different char lengths for a tld
+### Example output from script 02_what_tables_exist_in_db_and_rows
+```
+all_combs_length_4, rows: 1679616
+domain_names_length_4, rows: 31990
+domain_names_table, rows: 822523
+```
+
+### Example output from script u03 for db domain name table with different char lengths for a tld
 ```
 length: 30, are registered: 152
 length: 31, are registered: 191
@@ -55,3 +62,5 @@ length: 32, are registered: 412333
 length: 33, are registered: 982
 length: 34, are registered: 11
 ```
+
+
