@@ -7,7 +7,7 @@ from tqdm import tqdm # progress bar (not accessed here but where this file is i
 
 # Set the TLD to be used
 # TLD: Top Level Domain, like .com, .org, .net, .dev, etc.
-tld = '.dev'
+tld = str('.dev')
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))
 
