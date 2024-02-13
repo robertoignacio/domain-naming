@@ -27,8 +27,8 @@ With some few python scripts, you can know how many domain names are available t
 5. At control_vars.py set the char_length variable. This is the length of the domain name you want to query.
 6. At control_vars.py set the input_file path to the file at /inputfiles/ you want to process.
 7. Move to /proc_to_db/ as scripts use that path location (cd proc_to_db)
-8. python3 01_seed_only_domain_column_from_inputfile.py
-9. python3 02_what_tables_exist_in_db_and_rows.py (will print to terminal).
+8. Create a sqlite db from the input file: python3 01_seed_only_domain_column_from_inputfile.py
+9. Check what was created: python3 02_what_tables_exist_in_db_and_rows.py (will print to terminal).
 10. python3 03_create_table_all_combinations_at_char_length.py
 11. python3 04_create_table_domain_names_at_char_length.py
 12. Utility scripts and Janitor scripts. Read the Description on each file.
@@ -55,9 +55,8 @@ TBA
 
 ### Example output from script 02_what_tables_exist_in_db_and_rows.py
 ```
-all_combs_length_4, rows: 1679616
-domain_names_length_4, rows: 31990
-domain_names_table, rows: 822523
+Table: domain_names_table
+domain_names_table, rows: 822917, column names: ['id', 'domain_name']
 ```
 
 ### Example output from script u03_count_row_groups_from_domain_names_table.py
