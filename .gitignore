@@ -14,7 +14,8 @@ venvname/
 # control_vars.py stores variable values as cache
 __pycache__
 
+# ignore the node_modules directory
+node_modules
 
-
-
-
+# ignore the .next directory
+.next

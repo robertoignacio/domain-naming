@@ -1,0 +1,45 @@
+The Nextjs installation downloads and install next, plus:
+react, react-dom, typescript, types for all of them, autoprefixer, postcss, tailwindcss, eslint, eslint for next.
+
+$ pwd
+./domain-naming
+$ cd ..
+$ npx create-next-app@latest
+
+1. The npx installer will create a directory, with git uninitiated.
+
+What is your project named? my-app
+Would you like to use TypeScript? Yes
+Would you like to use ESLint? Yes
+Would you like to use Tailwind CSS? Yes
+Would you like to use `src/` directory? No
+Would you like to use App Router? (recommended) Yes
+Would you like to customize the default import alias (@/*)? Yes
+What import alias would you like configured? @/*
+
+--> import alias because helps with the paths in the code.
+
+
+2. Move the contents of the generated directory into the domain-naming directory.
+$ mv my-app/* domain-naming
+
+
+3. Go back to the directory of the project:
+$ cd domain-naming
+
+
+4. Add /node-modules and .next to .gitignore
+
+
+5. Verify the installation:
+$ npm run dev
+
+
+6. Dev mode carries all extra bloat, but is faster to work with.
+
+
+7. Go to file _3_to_query_the_sqlite_db_use_prisma.txt for the next steps.
+
+
+
+

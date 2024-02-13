@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* For not globals try to use css modules or tailwind js variables */
+
+/* --- CSS Reset --- */
+
+/* box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* include the padding and border in an element's total width and height */
+}
+
+/* reset margins */
+html,
+body,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* img block */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* inherit font at form elements */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
