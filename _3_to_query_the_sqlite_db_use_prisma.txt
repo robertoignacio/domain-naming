@@ -1,0 +1,61 @@
+This project follows a parallel adoption approach.
+To query an existing (large) sqlite database, install prisma
+
+
+1. install the Prisma CLI as a development dependency in the project:
+$ npm install prisma --save-dev
+
+When installing as a developpment dependency you will have to use the npx command to run the Prisma CLI commands.
+
+
+2. Install the Prisma VSCode extension (auto-format the contents, syntax highlighting, and autocompletion for Prisma schema files)
+Extension: Prisma (prisma.io)
+
+Then, invoke the VS Code format action
+
+
+3. Create the Prisma schema, somewhere in the project directory
+
+The Prisma CLI looks for the Prisma schema file in the following locations:
+https://www.prisma.io/docs/orm/prisma-schema/overview#prisma-schema-file-location
+
+Default location:
+
+at the root of the project directory:
+
+$ mkdir prisma
+$ touch prisma/schema.prisma
+
+
+4. Create a schema.prisma defining the datasource (in this case, your existing DB) and generator:
+The schema file is written in Prisma Schema Language (PSL).
+Can use env vars.
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../db_store/file.db"
+}
+
+provider --> sqlite, because is the file-based database we are using
+url --> the path to the sqlite database file (relative to the prisma file location)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+provider --> prisma-client-js, because we are using Prisma Client to query the database
+
+Prisma Client is an auto-generated database client that's tailored to your database schema.
+By default, Prisma Client is generated into the node_modules/.prisma/client folder, 
+but you can specify a custom location.
+
+
+5. Sync ./node_modules/prisma and ./node_modules/@prisma/
+It is recommended that you keep both the prisma and @prisma/client packages in sync 
+to avoid any unexpected errors or behaviors.
+
+$ npm install @prisma/client
+
+
+6. Populate the Prisma schema with models derived from your database schema.
+$ npx prisma db pull

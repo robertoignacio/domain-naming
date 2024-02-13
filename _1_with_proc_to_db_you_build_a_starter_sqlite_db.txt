@@ -1,0 +1,27 @@
+To use Prisma to read the existing sqlite db, it requires to have at least 2 columns:
+valid unique identifier (or id) for each table row data
+
+0. Activate the venv where the tqdm package is installed
+
+
+1. Seed the sqlite db with the data from the txt file
+
+at ./domain-name/proc_to_db:
+$ python3 01_seed_only_domain_column_from_inputfile.py
+
+
+2. What tables and columns are in the sqlite db?
+$ python3 02_what_tables_exist_in_db_and_rows.py
+
+
+3. Create tables of domain names by char_length
+$ python3 03_create_table_from_db_by_char_length.py
+
+
+4. Create tables of max possible domain names by "abcdefghijklmnopqrstuvwxyz0123456789" combinations for char_length
+$ python3 04_create_table_all_combinations_at_char_length.py
+
+
+5. Run utility scripts or janitor scripts, if needed
+
+

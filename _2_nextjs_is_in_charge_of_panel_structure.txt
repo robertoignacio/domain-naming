@@ -31,7 +31,10 @@ $ cd domain-naming
 4. Add /node-modules and .next to .gitignore
 
 
-5. Verify the installation:
+5. Fill/repair your ReadMe.md with the necessary information, altered by the npx create-next-app@latest command.
+
+
+6. Verify the installation:
 $ npm run dev
 
 (stop the server with ctrl+c)

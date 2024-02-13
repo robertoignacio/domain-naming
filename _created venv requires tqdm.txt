@@ -1,6 +1,8 @@
+at the root of the project:
+
 $ python3 -m venv venvname
 
-activate venv where tqdm is installed
+activate venv:
 $ source venvname/bin/activate
 
 $ pip install tqdm

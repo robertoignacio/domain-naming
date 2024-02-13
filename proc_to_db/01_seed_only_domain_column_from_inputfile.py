@@ -1,5 +1,6 @@
-# import sqlite3
-# from tqdm import tqdm
+import sqlite3
+from tqdm import tqdm # progress bar
+import uuid # generates a random UUID
 
 # Description: This script reads a file line by line and inserts the data into a sqlite database table.
 
@@ -13,8 +14,6 @@ tld_s = cv.tld_s
 # Table and column names
 dn_table = cv.dn_table
 dn_col = cv.dn_col
-
-tqdm = cv.tqdm
 
 # Create and/or connect to sqlite file db
 db_connection = cv.db_connection
@@ -83,6 +82,50 @@ cursor.execute(f'''
 cursor.execute(f'''
     ALTER TABLE {dn_table_no_duplicates} RENAME TO {dn_table}
 ''')
+
+# Add a new column 'id' to your table, id type is text
+# SQLite does not support the IF NOT EXISTS clause when adding a column, trying...
+try:
+    cursor.execute(f'''
+        ALTER TABLE {dn_table} ADD COLUMN id text
+    ''')
+except sqlite3.OperationalError as e:
+    if 'duplicate column name' in str(e):
+        pass  # Column already exists, do nothing
+    else:
+        raise  # re-raise the exception
+
+# If you need to purge the ids, set the value of the 'id' column to NULL for all rows
+cursor.execute(f"UPDATE {dn_table} SET id = NULL")
+
+# Get the number of rows in the table
+cursor.execute(f"SELECT COUNT(*) FROM {dn_table}")
+rows_count = cursor.fetchone()[0]
+
+# Populate the 'id' column with unique identifiers
+# Fetch all rows into a list
+rows = list(cursor.execute(f"SELECT rowid, * FROM {dn_table}"))
+
+# Iterate over each row in the list
+for row in tqdm(rows, desc="Populating the 'id' column... "):
+    # Generate a unique ID
+    unique_id = str(uuid.uuid4()).replace('-', '')
+    
+    # Assign the unique ID to the 'id' column of the current row
+    cursor.execute(f"UPDATE {dn_table} SET id = ? WHERE rowid = ?", (unique_id, row[0]))
+
+# Reorder the columns: from ['domain_name', 'id'] to ['id', 'domain_name']. Unsupported by SQLite.
+# Why here? You cannot know the row number without first creating the domain_names_table table
+
+# Create a new table with the desired column order
+print("Reordering columns... ")
+cursor.execute(f"CREATE TABLE IF NOT EXISTS colreorder_table (id text, {dn_col} text)")
+# Copy the data from the old table to the new one
+cursor.execute(f"INSERT INTO colreorder_table (id, {dn_col}) SELECT id, {dn_col} FROM {dn_table}")
+# Delete the old table
+cursor.execute(f"DROP TABLE {dn_table}")
+# Rename the new table to the old table's name
+cursor.execute(f"ALTER TABLE colreorder_table RENAME TO {dn_table}")
 
 # Commit the changes
 db_connection.commit()
