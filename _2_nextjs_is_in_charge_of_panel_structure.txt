@@ -34,6 +34,8 @@ $ cd domain-naming
 5. Verify the installation:
 $ npm run dev
 
+(stop the server with ctrl+c)
+
 
 6. Dev mode carries all extra bloat, but is faster to work with.
 
