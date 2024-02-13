@@ -4,3 +4,6 @@ activate venv where tqdm is installed
 $ source venvname/bin/activate
 
 $ pip install tqdm
+
+exit venv for dealing with other packages
+$ deactivate
