@@ -68,5 +68,3 @@ length: 32, are registered: 412333
 length: 33, are registered: 982
 length: 34, are registered: 11
 ```
-
-
