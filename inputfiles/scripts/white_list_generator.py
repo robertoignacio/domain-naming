@@ -19,6 +19,7 @@ content = response.text
 # A list to store each (row) line from content as a list item
 content_list = content.splitlines()
 
+# No punycode yet
 allowed_charset = '-0123456789abcdefghijklmnopqrstuvwxyz'
 
 white_list = []
@@ -30,10 +31,8 @@ for item in content_list:
         # If they are, add the item to white_list
         white_list.append(item.lower())
 
-print(white_list)
-
 # Create the file with write mode
-with open('./iana_tld_white_list.txt', 'w') as f:
+with open('../white_list_iana_tlds_all.txt', 'w') as f:
     # Write each item in the list to the file
     for item in white_list:
         f.write(f'{item}\n')

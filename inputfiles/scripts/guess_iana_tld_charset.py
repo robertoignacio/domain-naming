@@ -3,7 +3,7 @@
 unique_chars = set()
 
 # Open the file and read its contents
-with open('iana_tld_white_list.txt', 'r') as f:
+with open('../white_list_iana_tlds_all.txt', 'r') as f:
     for line in f:
         # Add each character in the line to the set
         for char in line:
@@ -18,5 +18,5 @@ unique_chars = sorted(list(unique_chars))
 unique_chars_str = ''.join(unique_chars)
 
 # Export unique_chars_str to a file
-with open('iana_tld_charset.txt', 'w') as f:
+with open('../iana_tld_charset.txt', 'w') as f:
     f.write(unique_chars_str)
