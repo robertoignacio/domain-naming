@@ -6,13 +6,14 @@ import control_vars as cv
 # Variables for the control flow of the program
 # control_vars.py is at the same directory (level) as this file
 
-tld = str('.dev')
-char_length = int(2)
+tld = str(".dev")
+
+char_length = cv.char_length
 
 # Table and column names
-dn_table = str('domain_names_table')
-dn_col = str('domain_name')
-dn_len_table = f'domain_names_length_{char_length}'
+dn_table = cv.dn_table
+dn_col = cv.dn_col
+dn_len_table = cv.dn_len_table
 
 # Create and/or connect to sqlite file db
 db_connection = cv.db_connection
@@ -24,12 +25,18 @@ cursor = db_connection.cursor()
 cursor.execute(f"CREATE TABLE IF NOT EXISTS {dn_len_table} (id text, {dn_col} text)")
 
 # Copy rows from the dn_table to dn_len_table where the length of domain_name until the tld is equal to char_length
-cursor.execute(f"""
+
+# Using string formatting to insert variables into the SQL command
+# Which is not recommended, as it is vulnerable to SQL injection
+# But this is a controlled environment, so it is safe to use it here.
+# Later the values will be from an allowed white list defined at the control_vars.py level
+safely_insert_values_to_sql =  f'''
     INSERT INTO {dn_len_table} (id, {dn_col})
     SELECT id, {dn_col}
     FROM {dn_table}
-    WHERE LENGTH(SUBSTR({dn_col}, 1, INSTR({dn_col}, {tld}) - 1)) = {char_length}
-""")
+    WHERE LENGTH(SUBSTR({dn_col}, 1, INSTR({dn_col}, ?) - 1)) = ?
+'''
+cursor.execute(safely_insert_values_to_sql, (tld, char_length))
 
 
 # Commit your changes and close the connection

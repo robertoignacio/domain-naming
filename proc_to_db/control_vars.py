@@ -41,5 +41,5 @@ all_combinations = f'all_combs_length_{char_length}'
 # dn_len_table use the char_length value
 # all_combinations use the char_length value
 # Modify here which table to query
-table = dn_table
+table = ''
 
