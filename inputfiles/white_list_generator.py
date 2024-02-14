@@ -16,14 +16,21 @@ print(f"Last-Modified: {white_list_last_modified}")
 # Store the content of the response in a variable in-memory
 content = response.text
 
+# A list to store each (row) line from content as a list item
+content_list = content.splitlines()
+
+allowed_charset = '-0123456789abcdefghijklmnopqrstuvwxyz'
+
 white_list = []
 
-# Split the content into lines, convert each line to lowercase, and add it to the list
-for line in content.splitlines():
-    # Check if the line starts with #
-    if not line.startswith('#'):
-        # If it doesn't, append it to the list, as strings in lowercase
-        white_list.append(str(line.lower()))
+# Iterate over each item in content_list
+for item in content_list:
+    # Check if all characters in the item are in allowed_charset
+    if all(char in allowed_charset for char in item.lower()):
+        # If they are, add the item to white_list
+        white_list.append(item.lower())
+
+print(white_list)
 
 # Create the file with write mode
 with open('./iana_tld_white_list.txt', 'w') as f:

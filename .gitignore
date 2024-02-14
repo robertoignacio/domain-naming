@@ -7,10 +7,10 @@ db_store/*
 /inputfiles/*
 # But don't ignore these files
 !/inputfiles/dummy.txt
-!/inputfiles/iana_tld_white_list_generator.py
 !/inputfiles/guess_iana_tld_charset.py
 !/inputfiles/iana_tld_charset.txt
 !/inputfiles/iana_tld_white_list.txt
+!/inputfiles/white_list_generator.py
 
 # do not include the venv directory
 venvname/
