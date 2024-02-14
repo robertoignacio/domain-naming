@@ -7,6 +7,11 @@ from tqdm import tqdm # progress bar (not accessed here but where this file is i
 
 # Set the TLD to be used
 # TLD: Top Level Domain, like .com, .org, .net, .dev, etc.
+tld_whitelist = ['com', 'org', 'net', 'dev']
+# A list of all valid top-level domains is maintained by the IANA and is updated from time to time.
+# https://data.iana.org/TLD/tlds-alpha-by-domain.txt
+
+
 tld = str('.dev')
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))

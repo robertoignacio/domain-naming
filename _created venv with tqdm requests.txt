@@ -5,7 +5,11 @@ $ python3 -m venv venvname
 activate venv:
 $ source venvname/bin/activate
 
-$ pip install tqdm
-
 exit venv for dealing with other packages
 $ deactivate
+
+
+-----------
+venv installed packages:
+$ pip install tqdm
+$ pip install requests
