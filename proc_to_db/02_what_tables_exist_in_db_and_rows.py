@@ -26,7 +26,6 @@ def print_tables(db_path):
 
     # Iterate over each table
     for table in tables:
-        print(f"Table: {table[0]}")
         # Get the row count
         table_name = table[0]
         cursor.execute(f"SELECT COUNT(*) FROM {table_name};")
