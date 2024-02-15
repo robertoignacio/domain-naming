@@ -59,3 +59,11 @@ $ npm install @prisma/client
 
 6. Populate the Prisma schema with models derived from your database schema.
 $ npx prisma db pull
+
+(Note: if you drop tables from the db, doing a prisma db pull will update the schema.prisma file to reflect the changes on the models)
+
+
+7. Will throw a model error: TBA will work on the script 01 to define primary keys
+"The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client."
+
+The instrospection process anyway finds the tables, but you will have to manually add the primary key to the tables in the schema.prisma file.

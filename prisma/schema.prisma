@@ -7,51 +7,8 @@ datasource db {
   url      = "file:../db_store/dev_tld_domain_names.db"
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model all_combs_length_2 {
-  combination String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model all_combs_length_3 {
-  combination String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model all_combs_length_4 {
-  combination String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model domain_names_length_2 {
-  domain_name String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model domain_names_length_3 {
-  domain_name String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model domain_names_length_4 {
-  domain_name String?
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+// introspection infers models from the db.
 model domain_names_table {
+  id          String  @unique
   domain_name String?
-
-  @@ignore
 }
