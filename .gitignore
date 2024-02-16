@@ -4,7 +4,7 @@
 db_store/*
 
 # Ignore everything in the directory: your large 500MB text files
-/inputfiles/icann_tld_dev_global_list_2024_02.txt
+/inputfiles/icann_tld_dev_registered_domains_latest.txt
 
 # do not include the venv directory
 venvname/
