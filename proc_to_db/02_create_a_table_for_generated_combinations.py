@@ -55,16 +55,11 @@ def generate_filtered_combinations(char_length, allowed_characters):
     # Generate all possible combinations
     combinations = itertools.product(allowed_characters, repeat=char_length)
 
-    # Filter the combinations based on the criteria
-    filtered_combinations = [
-        ''.join(combination)
-        for combination in combinations
-        if not (combination[0] == '-' or combination[-1] == '-' or '--' in ''.join(combination)) or 
-        (combination[0] == 'x' and combination[1] == 'n' and combination[2] == '-' and combination[3] == '-' and len(combination) >= 4)
-    ]
+    # Convert the combinations to strings and filter out invalid names
+    filtered_combinations = [''.join(combination) for combination in combinations 
+                             if not (combination[0] == '-' or combination[-1] == '-' or '--' in ''.join(combination))]
 
     return filtered_combinations
-
 
 # ----------------------------------------------
 
