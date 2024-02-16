@@ -2,8 +2,7 @@ import sqlite3
 
 # Description: This script prints all the tables in a sqlite database file, column names, and the number of rows in each table
 
-# Control panel vars at control_vars.py
-import control_vars as cv
+import control_vars as cv # From control_vars.py file, values to be set by a Control Panel.
 
 tld = cv.tld
 # tld_s is for naming the files and tables
