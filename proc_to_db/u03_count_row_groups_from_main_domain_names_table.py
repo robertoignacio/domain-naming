@@ -1,4 +1,4 @@
-# import sqlite3
+import sqlite3
 
 # Description : This script prints all domain name lengths within the domain_names_table, each with the number of registered domain names of that length.
 
@@ -7,14 +7,12 @@
 import control_vars as cv
 
 tld = cv.tld
+tld_s = str(tld.lstrip('.'))
 
-# Table and column names
-dn_table = cv.dn_table # domain_names_table (where all the domain names are stored)
-dn_col = cv.dn_col # domain_name (the same header name for all tables)
-
-
-# Create a connection to the SQLite database file
-db_connection = cv.db_connection
+# sqlite db path
+db_path = f'../db_store/{tld_s}_tld_domain_names.db'
+# db_connection = sqlite3.connect(f'../db_store/{tld_s}_tld_domain_names.db')
+db_connection = sqlite3.connect(db_path)
 
 # ------------------------------------------------
 # There is no REVERSE() in SQLite...
@@ -31,6 +29,9 @@ db_connection.create_function('find_last', 2, find_last)
 
 # Create a cursor object
 cursor = db_connection.cursor()
+
+dn_table = "main_domain_names_table"
+dn_col = "domain_name"
 
 # Get the substring up to the last occurrence of {tld} and then get its length
 # Execute a SELECT statement to get the number of rows for each character length up to the last occurrence of the TLD
