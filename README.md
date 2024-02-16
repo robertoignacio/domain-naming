@@ -16,7 +16,7 @@ input file shape:
 aaaa.dev.	10800	in	ns	ns.placeholder.tld
 ```
 <br>
-4. Set the tld value at /proc_to_db/control_vars.py
+4. Set the tld value at /proc_to_db/control_vars.py (eventually will become a Control Panel for the tld white_list)
 
 ```
 tld = ".dev"
@@ -59,14 +59,18 @@ $ python3 02_generate_all_possible_combinations.py 3
 ```
 $ python3 u01_what_tables_exist_within_created_db.py
 ```
-
-When you are done seeding the sqlite db file, deactivate the venv, go back to the project root where you have the prisma/prisma.scheme file, and run:
+<br>
+11. When you are done seeding the sqlite db file, deactivate the venv, go back to the project root where you have the prisma/prisma.scheme file, and run:
 
 ```
 $ npx prisma db push
 ```
-
 <br>
+12. TBA: db .env, prisma client.
+<br>
+<br>
+
+### Long name scripts
 Long script names can be fast typed in terminal with:  
 
 python3 01 --> tab: will autocomplete nearest match.  
