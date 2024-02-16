@@ -93,3 +93,18 @@ autoincrement()
 cuid()
 uuid()
 Can be defined on any scalar field (String, Int, enum)
+
+
+7. When migrating the database later, the user has to ensure manually that all not understood features are added to migrations manually.
+Exceptions: Unsupported field types
+https://github.com/prisma/prisma/issues/16311
+
+https://github.com/prisma/prisma/issues/4667
+Prisma currently need table which have a unique identifier, which can be a primary key, an unique index or a multiple column primary key or unique index.
+
+https://www.prisma.io/docs/orm/prisma-schema/data-model/models#limitations
+[...] every Prisma model must have either at least one of the following attributes:
+  @id or @@id for a single- or multi-field primary key constraint (max one per model)
+  @unique or @@unique for a single- or multi-field unique constraint
+
+

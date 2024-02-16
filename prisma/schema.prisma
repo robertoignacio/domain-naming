@@ -7,8 +7,4 @@ datasource db {
   url      = "file:../db_store/dev_tld_domain_names.db"
 }
 
-// introspection infers models from the db.
-model domain_names_table {
-  id          String  @unique
-  domain_name String?
-}
+

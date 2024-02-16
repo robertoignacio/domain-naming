@@ -6,9 +6,6 @@
 # control_vars.py is at the same directory (level) as this file
 import control_vars as cv
 
-# Which db table to consult, defined at control_vars.py file "control panel"
-table = cv.table
-
 # Create a connection to the SQLite database file
 db_connection = cv.db_connection
 
@@ -17,12 +14,8 @@ cursor = db_connection.cursor()
 
 # Execute SQL Select statement
 cursor.execute(f'''
-    SELECT * FROM {table}
+    SELECT * FROM main_domain_names_table
 ''')
-
-# cursor.execute(f'''
-#     SELECT * FROM {all_combinations}
-# ''')
 
 # Fetch all the rows
 rows = cursor.fetchall()
