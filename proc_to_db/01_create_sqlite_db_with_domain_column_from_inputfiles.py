@@ -1,6 +1,5 @@
 import sqlite3
 from tqdm import tqdm # progress bar
-import uuid # generates a random UUID
 
 # Description: This script creates a sqlite database file from a file that contains domain names.
 

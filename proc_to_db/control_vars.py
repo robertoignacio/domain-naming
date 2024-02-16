@@ -21,7 +21,7 @@ char_length = int(2)
 
 # ---------------------------------
 # Input file path
-input_file = open(f'../inputfiles/icann_tld_dev_registered_domains_latest.txt', 'r')
+input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
 
 # sqlite db path
 db_path = f'../db_store/{tld_s}_tld_domain_names.db'
