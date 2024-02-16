@@ -8,6 +8,7 @@ With some few python scripts, you can know how many domain names are available t
 <br>
 Note: requests and beautifulsoup4 are used to fetch and parse at the /inputfiles/scripts directory. 
 <br>
+<br>
 3. Input file: Have a DNS register kind of file at directory /inputfiles/ (shaped like dummy.txt). Best place to get those files is the ICANN website, CDZ, but cannot be used as is.
 
 ```
