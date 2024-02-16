@@ -12,7 +12,7 @@ tld_s = str(tld.lstrip('.'))
 
 # DNS records input file
 #input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
-input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
+input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_dummy.txt', 'r')
 
 # Create or connect to sqlite file db
 # sqlite db path

@@ -30,8 +30,8 @@ char_length = int()
 
 # Define the allowed char length range:
 # (Beware of over 5: the db file enlarges significantly)
-min_char_length_value = 1
-max_char_length_value = 4
+min_char_length_value = 2
+max_char_length_value = 4 # (over 4 is computationally expensive, beware)
 
 # Create the parser
 parser = argparse.ArgumentParser()
@@ -48,6 +48,21 @@ allowed_characters = open('../inputfiles/iana_tld_charset.txt', 'r').read()
 
 # ----------------------------------------------
 
+# Criteria: Domain names cannot start or end with a hyphen or double hyphens, but they can start with 'xn--'
+# Filter out combinations with that
+
+def generate_filtered_combinations(char_length, allowed_characters):
+    # Generate all possible combinations
+    combinations = itertools.product(allowed_characters, repeat=char_length)
+
+    # Filter the combinations based on the criteria
+    filtered_combinations = []
+
+    return filtered_combinations
+
+
+# ----------------------------------------------
+
 def create_combinations_table(char_length):
 
     # sqlite db path
@@ -58,33 +73,27 @@ def create_combinations_table(char_length):
     # Cursor, to execute SQL commands
     cursor = db_connection.cursor()
 
-    # Create table for all combinations of characters at a specific length
+    # Create a table for all combinations of characters at a specific length
     cursor.execute(f'''
         CREATE TABLE IF NOT EXISTS all_combs_length_{char_length}
         (id_comb INTEGER, combination TEXT)
     ''')
 
     # ----------------------------------------------
-    # Create all combinations of the allowed characters of the given length,
-    # ahead these will be filtered
-    combinations = itertools.product(allowed_characters, repeat=char_length)
-    # Each combination is a tuple of characters
+    # Create all combinations of the allowed characters of the given length.
+    filtered_combinations = generate_filtered_combinations(char_length, allowed_characters)
 
-    total_combinations = len(allowed_characters) ** char_length
+    # Get the length of the filtered_combinations
+    combination_length = len(filtered_combinations)
 
-    # Insert each combination into the combinations table
-    for i, combination in tqdm(enumerate(combinations), total=total_combinations, desc='Generating combinations... '):
-        combination_str = ''.join(combination)
-
-        # Because domain names cannot start or end with a hyphen, or contain double hyphens that are not "xn--"
-        # Skip combinations that are not allowed
-        if combination_str.startswith('-') or combination_str.endswith('-') or ('--' in combination_str and 'xn--' not in combination_str):
-            continue
+    # Insert each filtered_combination into the combinations table.
+    # enumerate(filtered_combinations) generates an index i for each combination in filtered_combinations
+    for i, combination in tqdm(enumerate(filtered_combinations), total=combination_length, desc=f'Creating combinations table for length {char_length}'):
 
         cursor.execute(f'''
             INSERT INTO all_combs_length_{char_length} (id_comb, combination)
             VALUES (?, ?)
-        ''', (i, combination_str))
+        ''', (i, combination))
 
     # Commit the changes and close the cursor
     db_connection.commit()

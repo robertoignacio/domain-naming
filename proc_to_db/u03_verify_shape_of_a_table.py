@@ -18,7 +18,7 @@ db_connection = sqlite3.connect(db_path)
 cursor = db_connection.cursor()
 
 # ---------------------------------
-table = "all_combs_length_4"
+table = "registered_domain_names_table"
 
 # Execute SQL Select statement
 cursor.execute(f'''
