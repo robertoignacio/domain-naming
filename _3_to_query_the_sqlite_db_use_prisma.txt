@@ -60,10 +60,36 @@ $ npm install @prisma/client
 6. Populate the Prisma schema with models derived from your database schema.
 $ npx prisma db pull
 
+instrospect --> prisma db pull --> infers models --> data model
+
 (Note: if you drop tables from the db, doing a prisma db pull will update the schema.prisma file to reflect the changes on the models)
 
+(prisma.io/docs/orm/prisma-schema/introspection)
+Introspection is often used to generate an initial version of the data model when adding Prisma to an existing project.
+Introspection has one main function: Populate your Prisma schema with a data model that reflects the current database schema.
 
-7. Will throw a model error: TBA will work on the script 01 to define primary keys
-"The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client."
+Prisma workflow:
+  s1. Change the database schema (e.g. using plain SQL)
+  s2. Run prisma db pull to update the Prisma schema
+  s3. Run prisma generate to update Prisma Client
+  s4. Use the updated Prisma Client in your application
+As you evolve the application, this process can be repeated for an indefinite number of times.
 
-The instrospection process anyway finds the tables, but you will have to manually add the primary key to the tables in the schema.prisma file.
+
+on SQL databases:
+  • Map tables in the database to Prisma models
+  • Map columns in the database to the fields of Prisma models
+  • Map indexes in the database to indexes in the Prisma schema
+  • Map database constraints to attributes or type modifiers in the Prisma schema
+
+
+(prisma.io/docs/orm/reference/prisma-schema-reference#id)
+Because SQLite is a relational database:
+@id --> primary key
+
+Can be annotated with a @default() value that uses functions to auto-generate an ID:
+
+autoincrement()
+cuid()
+uuid()
+Can be defined on any scalar field (String, Int, enum)

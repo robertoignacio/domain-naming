@@ -1,3 +1,5 @@
+Note: Remember that SQLite is embedded (serverless), not client-server, with flexible datatypes
+
 To use Prisma to read the existing sqlite db, it requires to have at least 2 columns:
 valid unique identifier (or id) for each table row data
 

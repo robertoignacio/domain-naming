@@ -11,6 +11,7 @@ db_connection = cv.db_connection
 cursor = db_connection.cursor()
 
 # Execute a VACUUM command to clean up the database
+# ('' is allowed for SQL literals)
 cursor.execute('VACUUM')
 
 # Close the connection

@@ -35,6 +35,7 @@ def print_tables(db_path):
         table_counts.append((table_name, row_count))
 
         # Get the column names
+        # PRAGMA is specific to sqlite: enables queries of internal (non-table) data. Not compatible with any other SQL database engine
         cursor.execute(f"PRAGMA table_info({table_name})")
         # Fetch all table columns
         columns = cursor.fetchall()

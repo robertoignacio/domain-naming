@@ -18,7 +18,10 @@ all_combinations = cv.all_combinations
 # Before running this script, run 02_what_tables_exist_in_db_and_rows.py to know which table to clean up
 # Change the table name to be cleaned up from the imported variables
 # Manually change the table to be dropped
-delete_table_contents = ''
+delete_table_contents = ""
+
+# "" is allowed for SQL column names
+# '' is allowed for SQL literals
 
 # progress bar
 tqdm = cv.tqdm

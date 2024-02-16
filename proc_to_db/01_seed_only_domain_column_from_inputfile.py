@@ -21,6 +21,7 @@ db_connection = cv.db_connection
 # Cursor, to execute SQL commands
 cursor = db_connection.cursor()
 
+# ---------------------------------
 # Create table
 cursor.execute(f'''
     CREATE TABLE IF NOT EXISTS {dn_table}
@@ -109,13 +110,14 @@ rows = list(cursor.execute(f"SELECT rowid, * FROM {dn_table}"))
 # Iterate over each row in the list
 for row in tqdm(rows, desc="Populating the 'id' column... "):
     # Generate a unique ID
-    unique_id = str(uuid.uuid4()).replace('-', '')
+    unique_id = str(uuid.uuid4())
     
     # Assign the unique ID to the 'id' column of the current row
     cursor.execute(f"UPDATE {dn_table} SET id = ? WHERE rowid = ?", (unique_id, row[0]))
 
 # Reorder the columns: from ['domain_name', 'id'] to ['id', 'domain_name']. Unsupported by SQLite.
 # Why here? You cannot know the row number without first creating the domain_names_table table
+# TBA: refactor at origin
 
 # Create a new table with the desired column order
 print("Reordering columns... ")
