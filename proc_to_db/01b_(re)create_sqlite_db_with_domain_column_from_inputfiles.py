@@ -11,10 +11,6 @@ import control_vars as cv
 tld = cv.tld
 tld_s = cv.tld_s
 
-# Table and column names
-dn_table = cv.dn_table
-dn_col = cv.dn_col
-
 # Create and/or connect to sqlite file db
 db_connection = cv.db_connection
 
@@ -33,13 +29,13 @@ cursor = db_connection.cursor()
 # https://www.sqlite.org/withoutrowid.html
 # Create table
 cursor.execute(f'''
-    CREATE TABLE IF NOT EXISTS {dn_table}
-    (id TEXT PRIMARY KEY {dn_col} TEXT) STRICT
+    CREATE TABLE IF NOT EXISTS "domain_names_table"
+    (id INTEGER PRIMARY KEY "domain_name" TEXT) STRICT
 ''')
 
-# [      dn_table     ]
-# [ -id- ] [ -dn_col- ]
+# [  domain_names_table  ]
+# [  id  ] [ domain_name ]
 
 # read the file line by line
 # input_file = open(f'../inputfiles/dummy.txt', 'r')
-input_file = cv.input_file
+input_file = open(f'../inputfiles/icann_tld_dev_global_list_2024_02.txt', 'r')
