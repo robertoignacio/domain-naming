@@ -9,6 +9,7 @@ import control_vars as cv # From control_vars.py file, values to be set by a Con
 # Description: This script will create a table for all combinations of allowed_characters at a specific length.
 # For example, with char_length = 3, and allowed_characters = 'abcde', the table will have the following rows:
 # aaa, bbb, ccc, abc, abd, abe, acd, ace, ade, bcd, bce, bde, cde
+# Without appending any tld.
 
 # Run as:
 # python3 02_create_table_for_allowed_combs_length.py <int argument>
