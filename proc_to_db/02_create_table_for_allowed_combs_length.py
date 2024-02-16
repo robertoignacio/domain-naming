@@ -73,7 +73,7 @@ def create_combinations_table(char_length):
     for i, combination in tqdm(enumerate(combinations), total=total_combinations, desc='Inserting combinations... '):
         combination_str = ''.join(combination)
         cursor.execute(f'''
-            INSERT INTO all_comb_length_{char_length} (id_comb, combination)
+            INSERT INTO all_combs_length_{char_length} (id_comb, combination)
             VALUES (?, ?)
         ''', (i, combination_str))
 
