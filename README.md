@@ -54,6 +54,7 @@ $ python3 02_generate_all_possible_combinations.py 3
 ```
 <br>
 10. Check what was created: 
+
 ```
 $ python3 u01_what_tables_exist_within_created_db.py
 ```
