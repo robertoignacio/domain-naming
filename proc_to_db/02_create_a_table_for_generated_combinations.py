@@ -65,14 +65,22 @@ def create_combinations_table(char_length):
     ''')
 
     # ----------------------------------------------
-    # Create all combinations of the allowed characters of the given length
+    # Create all combinations of the allowed characters of the given length,
+    # ahead these will be filtered
     combinations = itertools.product(allowed_characters, repeat=char_length)
+    # Each combination is a tuple of characters
 
     total_combinations = len(allowed_characters) ** char_length
 
-    # Insert each combination into the combinations_table
-    for i, combination in tqdm(enumerate(combinations), total=total_combinations, desc='Inserting combinations... '):
+    # Insert each combination into the combinations table
+    for i, combination in tqdm(enumerate(combinations), total=total_combinations, desc='Generating combinations... '):
         combination_str = ''.join(combination)
+
+        # Because domain names cannot start or end with a hyphen, or contain double hyphens that are not "xn--"
+        # Skip combinations that are not allowed
+        if combination_str.startswith('-') or combination_str.endswith('-') or ('--' in combination_str and 'xn--' not in combination_str):
+            continue
+
         cursor.execute(f'''
             INSERT INTO all_combs_length_{char_length} (id_comb, combination)
             VALUES (?, ?)

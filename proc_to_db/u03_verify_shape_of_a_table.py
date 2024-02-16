@@ -18,7 +18,7 @@ db_connection = sqlite3.connect(db_path)
 cursor = db_connection.cursor()
 
 # ---------------------------------
-table = "all_comb_length_2"
+table = "all_combs_length_4"
 
 # Execute SQL Select statement
 cursor.execute(f'''
