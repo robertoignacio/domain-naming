@@ -7,7 +7,8 @@ tld = str(".dev")
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))
 
-# Generated file to be read, by tld, that contains DNS records: domain names, TTL, DNS class, type of DNS Record, Name Server. 
+# As input file: requires a DNS records file
+# with this shape tab separated: domain name, TTL, DNS class, type of DNS Record, Name Server. 
 input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
 
 # Create or connect to sqlite file db
@@ -20,16 +21,8 @@ db_connection = sqlite3.connect(db_path)
 cursor = db_connection.cursor()
 
 # ---------------------------------
-# (https://www.sqlite.org/stricttables.html)
-# With STRICT: the datatype must be one of following: INT, INTEGER, REAL, TEXT, BLOB, ANY (no type coercion)
-# Content inserted into the column with a datatype other than ANY must be either a NULL (assuming there is no NOT NULL constraint on the column) or the type specified.
-# Columns that are part of the PRIMARY KEY are implicitly NOT NULL.
-# An INTEGER PRIMARY KEY column is an alias for the rowid, but an INT PRIMARY KEY column is not.
 # https://www.sqlite.org/lang_createtable.html
-
 # Create table with two columns, with rowid (hidden column)
-# Columns: id, domain_name
-# The id column as TEXT because it will be uuid 
 
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS main_domain_names_table
@@ -37,6 +30,7 @@ cursor.execute('''
 ''')
 
 # Note: Prisma ORM will not be able to recognize or map the id column (yet), 
+# when the id column is type TEXT, like with uuid
 # but will instrospect the columns correctly as fields.
 # After instrospect, you have to manually define the id field in the schema.prisma file
 # https://github.com/prisma/prisma/issues/16311

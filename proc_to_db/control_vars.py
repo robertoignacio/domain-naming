@@ -12,7 +12,7 @@ tld_whitelist = ['com', 'org', 'net', 'dev']
 # https://data.iana.org/TLD/tlds-alpha-by-domain.txt
 
 # ---------------------------------
-tld = str('.dev')
+tld = str(".dev")
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))
 

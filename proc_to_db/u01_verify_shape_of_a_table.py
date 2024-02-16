@@ -12,9 +12,11 @@ db_connection = cv.db_connection
 # Create a cursor object
 cursor = db_connection.cursor()
 
+table = "main_domain_names_table"
+
 # Execute SQL Select statement
 cursor.execute(f'''
-    SELECT * FROM main_domain_names_table
+    SELECT * FROM {table}
 ''')
 
 # Fetch all the rows
