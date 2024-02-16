@@ -1,13 +1,20 @@
-# import sqlite3
+import sqlite3
 
-# Variables for the control flow of the program
-# control_vars.py is at the same directory (level) as this file
-import control_vars as cv
+import control_vars as cv # From control_vars.py file, values to be set by a Control Panel.
 
-# Create and/or connect to sqlite file db
-db_connection = cv.db_connection
+# ---------------------------------
 
-# Create a cursor object
+tld = cv.tld
+# tld_s is for naming the files and tables
+tld_s = str(tld.lstrip('.'))
+
+# ---------------------------------
+# sqlite db path
+db_path = f'../db_store/{tld_s}_tld_domain_names.db'
+# db_connection = sqlite3.connect(f'../db_store/{tld_s}_tld_domain_names.db')
+db_connection = sqlite3.connect(db_path)
+
+# Cursor, to execute SQL commands
 cursor = db_connection.cursor()
 
 # Before running this script, run 02_what_tables_exist_in_db_and_rows.py to know which table to clean up

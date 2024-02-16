@@ -1,18 +1,24 @@
-# import sqlite3
+import sqlite3
 
 # Description: This script shows how the string was formatted. Will print the first rows of a table in a sqlite database file.
 
-# Variables for the control flow of the program
-# control_vars.py is at the same directory (level) as this file
-import control_vars as cv
+import control_vars as cv # From control_vars.py file, values to be set by a Control Panel.
 
-# Create a connection to the SQLite database file
-db_connection = cv.db_connection
+tld = cv.tld
+# tld_s is for naming the files and tables
+tld_s = str(tld.lstrip('.'))
 
-# Create a cursor object
+# ---------------------------------
+# sqlite db path
+db_path = f'../db_store/{tld_s}_tld_domain_names.db'
+# db_connection = sqlite3.connect(f'../db_store/{tld_s}_tld_domain_names.db')
+db_connection = sqlite3.connect(db_path)
+
+# Cursor, to execute SQL commands
 cursor = db_connection.cursor()
 
-table = "main_domain_names_table"
+# ---------------------------------
+table = "all_comb_length_2"
 
 # Execute SQL Select statement
 cursor.execute(f'''
@@ -26,7 +32,7 @@ rows = cursor.fetchall()
 counter = 0
 
 for row in rows:
-    if counter < 10:
+    if counter < 100:
         print(row)
         counter += 1
     else:
