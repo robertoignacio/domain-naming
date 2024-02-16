@@ -76,7 +76,7 @@ def create_combinations_table(char_length):
     # Create a table for all combinations of characters at a specific length
     cursor.execute(f'''
         CREATE TABLE IF NOT EXISTS all_combs_length_{char_length}
-        (id_comb INTEGER, combination TEXT)
+        (id_comb INTEGER PRIMARY KEY, combination TEXT)
     ''')
 
     # ----------------------------------------------

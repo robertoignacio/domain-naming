@@ -6,8 +6,3 @@ datasource db {
   provider = "sqlite"
   url      = "file:../db_store/dev_tld_domain_names.db"
 }
-
-model main_domain_names_table {
-  id          Int     @id @default(autoincrement())
-  domain_name String? @unique(map: "sqlite_autoindex_main_domain_names_table_1")
-}
