@@ -19,7 +19,7 @@ cursor = db_connection.cursor()
 
 # ---------------------------------
 
-value_to_find = "aa"
+value_to_find = "aaaa"
 
 # Get all tables in the database
 cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
