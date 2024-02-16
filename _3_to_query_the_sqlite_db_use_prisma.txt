@@ -62,11 +62,10 @@ $ npx prisma db pull
 
 instrospect --> prisma db pull --> infers models --> data model
 
-(Note: if you drop tables from the db, doing a prisma db pull will update the schema.prisma file to reflect the changes on the models)
-
-(prisma.io/docs/orm/prisma-schema/introspection)
-Introspection is often used to generate an initial version of the data model when adding Prisma to an existing project.
-Introspection has one main function: Populate your Prisma schema with a data model that reflects the current database schema.
+Prisma db pull WILL NOT detect the id column as valid id if it stores an uuid value column.
+I modified the sqlite db file generator script to use autoincrement integer as primary key.
+If your sqlite db uses uuid as primary key, you will have to manually modify the schema.prisma file to reflect the changes on the models.
+(https://github.com/prisma/prisma/issues/16311)
 
 Prisma workflow:
   s1. Change the database schema (e.g. using plain SQL)
@@ -75,36 +74,13 @@ Prisma workflow:
   s4. Use the updated Prisma Client in your application
 As you evolve the application, this process can be repeated for an indefinite number of times.
 
+prisma db pull:
+  maps tables as models
+  maps columns as fields
+  maps indexes as indexes
+  maps constraints as attributes or type modifiers
+  maps foreign keys as relations
 
-on SQL databases:
-  • Map tables in the database to Prisma models
-  • Map columns in the database to the fields of Prisma models
-  • Map indexes in the database to indexes in the Prisma schema
-  • Map database constraints to attributes or type modifiers in the Prisma schema
-
-
-(prisma.io/docs/orm/reference/prisma-schema-reference#id)
-Because SQLite is a relational database:
-@id --> primary key
-
-Can be annotated with a @default() value that uses functions to auto-generate an ID:
-
-autoincrement()
-cuid()
-uuid()
-Can be defined on any scalar field (String, Int, enum)
-
-
-7. When migrating the database later, the user has to ensure manually that all not understood features are added to migrations manually.
-Exceptions: Unsupported field types
-https://github.com/prisma/prisma/issues/16311
-
-https://github.com/prisma/prisma/issues/4667
-Prisma currently need table which have a unique identifier, which can be a primary key, an unique index or a multiple column primary key or unique index.
-
-https://www.prisma.io/docs/orm/prisma-schema/data-model/models#limitations
-[...] every Prisma model must have either at least one of the following attributes:
-  @id or @@id for a single- or multi-field primary key constraint (max one per model)
-  @unique or @@unique for a single- or multi-field unique constraint
+7. 
 
 
