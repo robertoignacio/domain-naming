@@ -12,7 +12,7 @@ tld_s = str(tld.lstrip('.'))
 
 # DNS records input file
 #input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
-input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_dummy.txt', 'r')
+input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
 
 # Create or connect to sqlite file db
 # sqlite db path
@@ -28,7 +28,7 @@ cursor = db_connection.cursor()
 # Create table with two columns, with rowid (hidden column)
 
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS main_domain_names_table
+    CREATE TABLE IF NOT EXISTS registered_domain_names_table
     (id INTEGER PRIMARY KEY, domain_name TEXT UNIQUE)
 ''')
 
@@ -60,7 +60,7 @@ with input_file as file:
         
         # Insert the data into the table only if the value does not already exist
         cursor.execute(f'''
-            INSERT OR IGNORE INTO main_domain_names_table (id, domain_name)
+            INSERT OR IGNORE INTO registered_domain_names_table (id, domain_name)
             VALUES (NULL, ?)
         ''', (domain_name_value,))
 
