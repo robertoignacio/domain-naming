@@ -1,15 +1,18 @@
 import sqlite3
 from tqdm import tqdm # progress bar
 
-# Description: This script creates a sqlite database file from a file that contains domain names.
+import control_vars as cv # From control_vars.py file, values to be set by a Control Panel.
 
-tld = str(".dev")
+# Description: This script creates a sqlite database file from a file that contains DNS records
+# with this shape tab separated: domain name, TTL, DNS class, type of DNS Record, Name Server.
+
+tld = cv.tld
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))
 
-# As input file: requires a DNS records file
-# with this shape tab separated: domain name, TTL, DNS class, type of DNS Record, Name Server. 
-input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
+# DNS records input file
+#input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_latest.txt', 'r')
+input_file = open(f'../inputfiles/icann_tld_{tld_s}_registered_domains_dummy.txt', 'r')
 
 # Create or connect to sqlite file db
 # sqlite db path

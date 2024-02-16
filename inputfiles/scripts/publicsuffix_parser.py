@@ -35,7 +35,7 @@ if current_tuple_lines:
     tuples_list.append(tuple(current_tuple_lines))
 
 # Open the output file in write mode
-with open('output.txt', 'w') as f:
+with open('publicsuffix_parser_output.txt', 'w') as f:
     # Iterate over each tuple in the list
     for t in tuples_list:
         # Convert the tuple to a string and write it to the file

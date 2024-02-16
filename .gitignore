@@ -3,7 +3,7 @@
 # use the janitor_db_vacuum.py to clean up the db file of unused space
 db_store/*
 
-# Ignore everything in the directory: your large 500MB text files
+# Ignore the large real DNS registry files
 /inputfiles/icann_tld_dev_registered_domains_latest.txt
 
 # do not include the venv directory

@@ -4,17 +4,27 @@ from tqdm import tqdm # progress bar
 
 import argparse # ArgumentParser(): Process an integer within a certain range.
 
+import control_vars as cv # From control_vars.py file, values to be set by a Control Panel.
+
 # Description: This script will create a table for all combinations of allowed_characters at a specific length.
 # For example, with char_length = 3, and allowed_characters = 'abcde', the table will have the following rows:
 # abc, abd, abe, acd, ace, ade, bcd, bce, bde, cde
 
-# Input variables, from white list
+# Run as:
+# python3 02_create_table_for_allowed_combs_length.py <int argument>
+# <int argument> is the character length of the combinations to be created.
+# Example: 
+# python3 02_create_table_for_allowed_combs_length.py 3
+# Better than manually changing the char_length value in the script.
+
+# ----------------------------------------------
+# Input variables, from a tld white list
 # defined tld
-tld = str(".dev")
+tld = cv.tld
 # tld_s is for naming the files and tables
 tld_s = str(tld.lstrip('.'))
 
-# Define the character length
+# Initialize the character length variable
 char_length = int()
 
 # Define the allowed char length range:
