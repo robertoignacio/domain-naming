@@ -1,69 +1,104 @@
-# Domain Naming: Choosing domain name by availability
-## Motivation
-Why. My motivation for this was three-fold: 
-* I needed focused practice with python and SQL,
-* I am creating domain names for local my projects,
-* I am trying to solve a mystery of rogue inbound hosts.
-
-## What is "naming"?
-Naming is a process used in marketing, sales, and business to create names for brands.  
-When you are building a web project eventually you will have to create a domain name for it. Some people even build a business around it.  
-Brand names are quite difficult to reach the 'correct' name, but worst part is that all dictionary words are already registered as domain names.  
-So, you will have better luck with neologisms or phrases.  
-With brands, besides the domain name you will have to deal with the trademark registration. Trademark availability is another subject.  
-
-## What is "domain naming"?
-Domain naming is an approach to find a name to choose for the domain name of your website, or brand if applied, using the process of the naming discipline.  
-With domain names you can register the same name at different tld, but are caveats to that (from spam to phishing, to not nefarious uses, to trademark infringements).  
-At the old days of the ".com" ."net" large brands could afford to register all domain names for all tlds, but these days is just not feasible, which prompted the creation of 'vanity' tlds.  
+# Domain Naming
 
 ## Usage
 With some few python scripts, you can know how many domain names are available to the tld of your choice.  
 <br>
-1. Clone this repo. Directory structure: /proc_to_db/ and /inputfiles/, and files.
-2. Have python3 and tqdm (at the venv or globally)  
-3. At directory /inputfiles/ have a text file with domain names rows (shaped like dummy.txt)
-4. At directory /proc_to_db/ open in code editor control_vars.py and set the tld variable.
-5. At control_vars.py set the char_length variable. This is the length of the domain name you want to query.
-6. At control_vars.py set the input_file path to the file at /inputfiles/ you want to process.
-7. Move to /proc_to_db/ as scripts use that path location (cd proc_to_db)
-8. Create a sqlite db from the input file: python3 01_seed_only_domain_column_from_inputfile.py
-9. Check what was created: python3 02_what_tables_exist_in_db_and_rows.py (will print to terminal).
-10. python3 03_create_table_all_combinations_at_char_length.py
-11. python3 04_create_table_domain_names_at_char_length.py
-12. Utility scripts and Janitor scripts. Read the Description on each file.
+1. Clone this repo.
+2. Have python3, and at the venv or globally: tqdm, requests, beautifulsoup4
+<br>
+requests and beautifulsoup4 are used to fetch and parse at the /inputfiles/scripts directory.
+<br>
+3. Input file: Have a DNS register kind of file at directory /inputfiles/ (shaped like dummy.txt). Best place to get those files is the ICANN website, CDZ, but cannot be used as is.
+```
+aaaa.dev.	10800	in	ns	ns.placeholder.tld
+```
+4. Set the tld value at /proc_to_db/control_vars.py
+```
+tld = ".dev"
+```
+<br>
+5. At the project root, activate venv:
+```
+$ source venvname/bin/activate
+```
+6. Move to /proc_to_db/ as scripts use that path location
+```
+$ cd proc_to_db
+```
+7. Create a sqlite db from the input file:
+```
+$ python3 01_create_sqlite_db_with_domain_column_from_inputfiles.py
+```
+8. Check what was created: 
+```
+python3 u01_what_tables_exist_within_created_db.py
+```
+9. Generate all possible combinations of domain names for name length <integer> within range (defined at the script file):
+```
+python3 02_generate_all_possible_combinations.py <integer>
+```
+
 <br>
 Long script names can be fast typed in terminal with:  
 
 python3 01 --> tab: will autocomplete nearest match.  
 python3 u01 --> tab: will autocomplete nearest match.  
 <br>
-control_vars.py stores variable inputs that can change. Later will be a control panel.  
-Set char_length there before running any script.  
-Warning: Each char_length integer increment will demand higher system resources.
 
-## Requires
-pip install tqdm  
-(I've set up progress bars).  
-python3
+### Example outputs for utility scripts (that print to terminal):
 
-### Migration script from sqlite to postgres
-TBA
-
-### Example output of script that finds if a domain name is registered or not.
-TBA 
-
-### Example output from script 02_what_tables_exist_in_db_and_rows.py
+$ python3 u01_what_tables_exist_within_created_db.py
 ```
-Table: domain_names_table
-domain_names_table, rows: 822917, column names: ['id', 'domain_name']
+Table: registered_domain_names_table: Columns: ['id', 'domain_name'], Rows: 822523
+Table: all_combs_length_3: Columns: ['id_comb', 'combination'], Rows: 47952
+Table: all_combs_length_2: Columns: ['id_comb', 'combination'], Rows: 1296
+Table: all_combs_length_4: Columns: ['id_comb', 'combination'], Rows: 1772928
 ```
-
-### Example output from script u03_count_row_groups_from_domain_names_table.py
+<br>
+$ python3 u02_count_row_groups_from_registered_domain_names_table.py
 ```
-length: 30, are registered: 152
-length: 31, are registered: 191
-length: 32, are registered: 412333
-length: 33, are registered: 982
-length: 34, are registered: 11
+domain name length: 30, are registered: 15
+domain name length: 31, are registered: 11
+domain name length: 32, are registered: 411303
+domain name length: 33, are registered: 5
+domain name length: 34, are registered: 1
 ```
+<br>
+$ python3 u03_verify_shape_of_a_table.py
+```
+(1, 'dev')
+(2, '0--0.dev')
+(3, '0-0-0-0.dev')
+(4, '0-0.dev')
+(5, '0-1.dev')
+(6, '0-2.dev')
+(7, '0-3.dev')
+(8, '0-9.dev')
+(9, '0-day.dev')
+(10, '0-matter.dev')
+```
+<br>
+$ python3 u04_does_this_exist_in_table.py
+(value_to_find = "aaaa")
+```
+Value found in table: all_combs_length_4 [column: combination]
+```
+<br>
+<br>
+## Motivation
+Why. My motivation for this was three-fold: 
+* I needed focused practice with python, SQL and SQLite,
+* I am creating domain names for my projects,
+* I am trying to solve a mystery of rogue inbound hosts (DNSSEC).
+<br>
+## What is "naming"?
+Naming is a process used in marketing, sales, and business to create names for brands.  
+When you are building a web project eventually you will have to create a domain name for it. Some people even build a business around it.  
+Brand names are quite difficult to reach the 'correct' name, but worst part is that all dictionary words are already registered as domain names.  
+So, you will have better luck with neologisms or phrases.  
+With brands, besides the domain name you will have to deal with the trademark registration. Trademark availability is another subject.  
+<br>
+## What is "domain naming"?
+Domain naming is an approach to find a name to choose for the domain name of your website, or brand if applied, using the process of the naming discipline.  
+With domain names you can register the same name at different tld, but are caveats to that (from spam to phishing, to not nefarious uses, to trademark infringements).  
+At the old days of the ".com" ."net" large brands could afford to register all domain names for all tlds, but these days is just not feasible, which prompted the creation of brand tlds. 

@@ -41,4 +41,4 @@ for table in all_tables:
         count = cursor.fetchone()[0]
 
         if count > 0:
-            print(f'Value found in table {table_name}, column {column_name}')
+            print(f'Value found in table: {table_name} [column: {column_name}]')
