@@ -29,7 +29,7 @@ db_connection.create_function('find_last', 2, find_last)
 # Create a cursor object
 cursor = db_connection.cursor()
 
-dn_table = "main_domain_names_table"
+dn_table = "registered_domain_names_table"
 dn_col = "domain_name"
 
 # Get the substring up to the last occurrence of {tld} and then get its length
@@ -48,9 +48,10 @@ cursor.execute(f'''
 # Fetch all results
 results = cursor.fetchall()
 
+print(f'For domain names ending with {tld}:')
 # Print each result
 for result in results:
-    print(f'length: {result[0]}, are registered: {result[1]}')
+    print(f'domain name length: {result[0]}, are registered: {result[1]}')
 
 # Close the connection
 db_connection.close()
